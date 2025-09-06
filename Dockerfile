@@ -1,6 +1,6 @@
 FROM node:lts-buster
 
-RUNRUN apt-get update && \
+RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     ffmpeg \
     imagemagick \
@@ -11,7 +11,8 @@ WORKDIR /usr/src/app
 
 COPY package.json .
 
-RUN npm install && npm install -g qrcode-terminal pm2
+RUN npm ci && npm install -g qrcode-terminal pm2
+
 
 COPY . .
 
